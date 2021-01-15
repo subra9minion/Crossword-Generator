@@ -21,3 +21,7 @@ The puzzle is saved onto the ```output.png``` file.
 ```python generate.py data/structure1.txt data/words1.txt output.png```
 
 <img src="https://github.com/subra9minion/Crossword-Generator/blob/master/data/sample.png" width="65%" />
+
+## License
+This project was made under CS50's Introduction to Artificial Intelligence, a course of study by HarvardX. <br>
+The course is licensed under a [Creative Commons License](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
