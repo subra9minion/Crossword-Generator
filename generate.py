@@ -7,7 +7,7 @@ class CrosswordCreator():
 
     def __init__(self, crossword):
         """
-        Create new CSP crossword generate.
+        Creates new CSP crossword generate.
         """
         self.crossword = crossword
         self.domains = {
@@ -17,7 +17,7 @@ class CrosswordCreator():
 
     def letter_grid(self, assignment):
         """
-        Return 2D array representing a given assignment.
+        Returns 2D array representing a given assignment.
         """
         letters = [
             [None for _ in range(self.crossword.width)]
@@ -33,7 +33,7 @@ class CrosswordCreator():
 
     def print(self, assignment):
         """
-        Print crossword assignment to the terminal.
+        Prints crossword assignment to the terminal.
         """
         letters = self.letter_grid(assignment)
         for i in range(self.crossword.height):
@@ -46,7 +46,7 @@ class CrosswordCreator():
 
     def save(self, assignment, filename):
         """
-        Save crossword assignment to an image file.
+        Saves crossword assignment to an image file.
         """
         from PIL import Image, ImageDraw, ImageFont
         cell_size = 100
@@ -87,7 +87,7 @@ class CrosswordCreator():
 
     def solve(self):
         """
-        Enforce node and arc consistency, and then solve the CSP.
+        Enforces node and arc consistency, and then solves the CSP.
         """
         self.enforce_node_consistency()
         self.ac3()
@@ -95,8 +95,8 @@ class CrosswordCreator():
 
     def enforce_node_consistency(self):
         """
-        Update `self.domains` such that each variable is node-consistent.
-        (Remove any values that are inconsistent with a variable's unary
+        Updates `self.domains` such that each variable is node-consistent.
+        (Removes any values that are inconsistent with a variable's unary
          constraints; in this case, the length of the word.)
         """
 
@@ -120,11 +120,11 @@ class CrosswordCreator():
 
     def revise(self, x, y):
         """
-        Make variable `x` arc consistent with variable `y`.
-        To do so, remove values from `self.domains[x]` for which there is no
+        Makes variable `x` arc consistent with variable `y` by
+        removing values from `self.domains[x]` for which there is no
         possible corresponding value for `y` in `self.domains[y]`.
 
-        Return True if a revision was made to the domain of `x`; return
+        Returns True if a revision was made to the domain of `x`; returns
         False if no revision was made.
         """
 
@@ -155,12 +155,12 @@ class CrosswordCreator():
 
     def ac3(self, arcs=None):
         """
-        Update `self.domains` such that each variable is arc consistent.
-        If `arcs` is None, begin with initial list of all arcs in the problem.
-        Otherwise, use `arcs` as the initial list of arcs to make consistent.
+        Updates `self.domains` such that each variable is arc consistent.
+        If `arcs` is None, begins with initial list of all arcs in the problem.
+        Otherwise, uses `arcs` as the initial list of arcs to make consistent.
 
-        Return True if arc consistency is enforced and no domains are empty;
-        return False if one or more domains end up empty.
+        Returns True if arc consistency is enforced and no domains are empty;
+        returns False if one or more domains end up empty.
         """
         queue = deque()
 
@@ -194,8 +194,8 @@ class CrosswordCreator():
 
     def assignment_complete(self, assignment):
         """
-        Return True if `assignment` is complete (i.e., assigns a value to each
-        crossword variable); return False otherwise.
+        Returns True if `assignment` is complete (i.e., assigns a value to each
+        crossword variable); returns False otherwise.
         """
         for variable in self.crossword.variables:
             if variable not in assignment.keys():
@@ -204,8 +204,8 @@ class CrosswordCreator():
 
     def consistent(self, assignment):
         """
-        Return True if `assignment` is consistent (i.e., words fit in crossword
-        puzzle without conflicting characters); return False otherwise.
+        Returns True if `assignment` is consistent (i.e., words fit in crossword
+        puzzle without conflicting characters); returns False otherwise.
         """
         
         # checking unique values
@@ -236,7 +236,7 @@ class CrosswordCreator():
 
     def order_domain_values(self, var, assignment):
         """
-        Return a list of values in the domain of `var`, in order by
+        Returns a list of values in the domain of `var`, in order by
         the number of values they rule out for neighboring variables.
         The first value in the list, for example, should be the one
         that rules out the fewest values among the neighbors of `var`.
@@ -263,11 +263,10 @@ class CrosswordCreator():
 
     def select_unassigned_variable(self, assignment):
         """
-        Return an unassigned variable not already part of `assignment`.
-        Choose the variable with the minimum number of remaining values
-        in its domain. If there is a tie, choose the variable with the highest
-        degree. If there is a tie, any of the tied variables are acceptable
-        return values.
+        Returns an unassigned variable not already part of `assignment`.
+        Chooses the variable with the minimum number of remaining values
+        in its domain. If there is a tie, chooses the variable with the highest
+        degree. If there is a tie, any of the tied variables are chosen.
         """
        
         # dictionary to store remaining domain values for each variable
@@ -292,12 +291,12 @@ class CrosswordCreator():
 
     def backtrack(self, assignment):
         """
-        Using Backtracking Search, take as input a partial assignment for the
-        crossword and return a complete assignment if possible to do so.
+        Using Backtracking Search, returns a complete assignment if possible to do so,
+        taking as input a partial assignment for the crossword.
 
         `assignment` is a mapping from variables (keys) to words (values).
 
-        If no assignment is possible, return None.
+        If no assignment is possible, returns None.
         """
         if self.assignment_complete(assignment):
             return assignment

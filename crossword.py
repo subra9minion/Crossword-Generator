@@ -4,7 +4,7 @@ class Variable():
     DOWN = "down"
 
     def __init__(self, i, j, direction, length):
-        """Create a new variable with starting point, direction, and length."""
+        """Creates a new variable with starting point, direction, and length."""
         self.i = i
         self.j = j
         self.direction = direction
@@ -39,7 +39,7 @@ class Crossword():
 
     def __init__(self, structure_file, words_file):
 
-        # Determine structure of crossword
+        # Determines structure of crossword
         with open(structure_file) as f:
             contents = f.read().splitlines()
             self.height = len(contents)
@@ -57,11 +57,11 @@ class Crossword():
                         row.append(False)
                 self.structure.append(row)
 
-        # Save vocabulary list
+        # Saves vocabulary list
         with open(words_file) as f:
             self.words = set(f.read().upper().splitlines())
 
-        # Determine variable set
+        # Determines variable set
         self.variables = set()
         for i in range(self.height):
             for j in range(self.width):
@@ -104,7 +104,7 @@ class Crossword():
                             length=length
                         ))
 
-        # Compute overlaps for each word
+        # Computes overlaps for each word
         # For any pair of variables v1, v2, their overlap is either:
         # None, if the two variables do not overlap; or
         # (i, j), where v1's ith character overlaps v2's jth character
