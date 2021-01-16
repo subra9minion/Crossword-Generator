@@ -2,6 +2,10 @@
 
 The Crossword-Generator generates a crossword puzzle given a list of words to choose from and the structure desired. It is modeled as a **constraint satisfaction problem**.
 
+1. **Unary Constraint**: The length of a sequence of blank cells (a variable) must be equal to the length of the word used to fill in.
+1. **Binary Constraint**: Any two adjacent variables contribute to a binary constraint by overlap of one cell.
+1. **Additional Constraint**: All words must be different. The same word is not repeated multiple times in the puzzle.
+
 ## Installation
 
 1. Ensure you have Python (3.3 or greater) installed.
