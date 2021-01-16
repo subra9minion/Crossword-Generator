@@ -5,7 +5,7 @@ The Crossword-Generator generates a crossword puzzle given a list of words to ch
 ## Installation
 
 1. Ensure you have Python (3.3 or greater) installed.
-1. Download this folder into your system.
+1. Download this repository into your system.
 1. Run ```pip3 install Pillow``` in your terminal.
 
 ## Usage
